@@ -108,9 +108,10 @@ h6 {
 }
 
 a {
-    color: #4a4a4a;
+    color: #97A5C0;
     transition: color ease 0.3s;
     text-decoration: none;
+    margin: 0 3px;
 }
 
 a:hover {

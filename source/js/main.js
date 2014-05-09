@@ -27,11 +27,7 @@ function afterPjax() {
     postTitle = document.title;
     postHref = window.location.href;
 
-    $('img').each( function() {
-        var $img = $(this),
-            href = $img.attr('src');
-        $img.wrap('<lightbox data-lightbox=a href="' + href + '" title="' + $img.attr('alt') +'"' + '></lightbox>');
-    });
+
 
 
 
@@ -41,6 +37,12 @@ function afterPjax() {
     });
 
     //    Multiple DUOSHUO threads for PJAX START
+
+    $('img').each( function() {
+        var $img = $(this),
+            href = $img.attr('src');
+        $img.wrap('<lightbox data-lightbox=a href="' + href + '" title="' + $img.attr('alt') +'"' + '></lightbox>');
+    });
 
     $(".post-content").find('p,pre,ol,ul,blockquote,lightbox')
         .each(function () {
