@@ -32,7 +32,7 @@
             </p>
             <% if (theme.excerpt_link) { %>
             <p>
-                <a href="<%- config.root %><%- post.path %>"
+                <a data-pjax href="<%- config.root %><%- post.path %>"
                    class="excerpt-link"><%= theme.excerpt_link %>...</a>
             </p>
             <% } %>
