@@ -52,7 +52,7 @@ body {
     font-size: 2.0rem;
     line-height: 1.6em;
     color: #3A4145;
-    background: #f7f7f7;
+    background: white;
 }
 
 ::-moz-selection {
@@ -527,6 +527,8 @@ margin on the iframe, cause it breaks stuff. */
     height: auto;
 }
 
+
+
 .post p {
     font-size: 18px;
     line-height: 30px;
@@ -960,9 +962,6 @@ pre .chunk {
         margin-left: 0;
     }
 
-    li#navbar-title {
-        display: none;
-    }
 
     .site-head {
         -webkit-box-sizing: border-box;
@@ -1035,8 +1034,8 @@ pre .chunk {
     }
 
     .post-content p {
-        font-size: 16px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 24px;
     }
 
     .inner,
