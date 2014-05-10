@@ -29,8 +29,6 @@ var generateTOC = function() {
 
 };
 
-
-
 afterPjax();
 
 function afterPjax() {
@@ -54,8 +52,8 @@ function afterPjax() {
     });
 
     $('a[data-lightbox="a"]').fluidbox({
-        stackIndex : 1,
-=    });
+        stackIndex : 1
+    });
 
     $(".post-content").find('p,pre,ol,ul,blockquote,lightbox')
         .each(function () {
@@ -66,7 +64,9 @@ function afterPjax() {
         var self = $(this);
         $(this).attr('id','comment' + i );
         var identifier =  postTitle + $(this).attr('id');
-        var jsonURL = 'http://api.duoshuo.com/threads/counts.jsonp?short_name=yuche&threads=' + identifier +
+        var duoshuoName = 'yuche'; // change to your DUOSHUO name
+        var jsonURL = 'http://api.duoshuo.com/threads/counts.jsonp?short_name=' +
+            duoshuoName + '&threads=' + identifier +
             '&callback=?';
         $.getJSON(jsonURL,function(data) {
                 $.each(data.response, function(i, item) {
@@ -80,7 +80,11 @@ function afterPjax() {
         $(this).after('<div class="inline-comment"></div>');
     });
 
+//  Custom about page
 
+    if(location.pathname === '/about/'){
+        $('div.post-meta').remove();
+    }
 
     $('.disqus').mouseover(function() {
         $(this).find('span.ds-thread-count').css('opacity','1');
@@ -307,7 +311,6 @@ function afterPjax() {
 
 };
 //      PJAX init
-$.pjax.maxCacheLength = 0;
 $(document).pjax('a[data-pjax]', '#pjax', { fragment: '#pjax', timeout: 10000 });
 $(document).on({
     'pjax:click': function () {
@@ -325,8 +328,6 @@ $(document).on({
         $('#navbar-toc').hide();
         $('.nexus').css('width', 'auto');
         $('#navbar-title a').hide();
-
-
     },
     'pjax:popstate': function () {
         setTimeout("$('#toc').find('li').remove();",100);

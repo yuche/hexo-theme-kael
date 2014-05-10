@@ -596,6 +596,8 @@ i#scroll-up:hover {
     animation: fadeOut .2s;
 }
 
+   /*Multiple DUOSHUO threads for PJAX START*/
+
 span.ds-thread-count {
     display: block;
     opacity: 0;
@@ -663,6 +665,9 @@ span.ds-thread-count:after {
     -moz-transform: translateX(-150px);
     -ms-transform: translateX(-150px);
 }
+
+   /*Multiple DUOSHUO threads for PJAX END*/
+
 
 .fluidbox {
     outline: none;

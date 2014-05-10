@@ -412,7 +412,11 @@ margin on the iframe, cause it breaks stuff. */
 
 .post-title a {
     text-decoration: none;
-    line-height: 2em;
+    line-height: 1.5em;
+}
+
+.post-content li {
+    font-size: 18px;
 }
 
 .tag-tile a {
