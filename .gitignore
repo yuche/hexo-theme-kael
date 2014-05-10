@@ -1,0 +1,90 @@
+# gitignore file, modified from kernel srctree
+#
+# NOTE! Please use 'git ls-files -i --exclude-standard'
+# command after changing this file, to see if there are
+# any tracked files which get ignored after the change.
+
+#
+# Normal rules
+#
+.*
+\#*#
+
+# Numerous always-ignore extensions
+*.bak
+*.tmp
+*.patch
+*.diff
+*.err
+*.orig
+*.log
+*.rej
+*.swo
+*.swp
+*.zip
+*.vi
+*~
+*.sass-cache
+
+# git files that we don't want to ignore even it they are dot-files
+!.gitignore
+!.mailmap
+
+# stgit generated dirs
+patches-*
+
+
+#
+# Development tools
+#
+
+# SCM Folders to ignore
+.hg
+.svn
+.CVS
+.idea
+dist
+
+# C/C++ Generated files
+*.o
+*.o.*
+*.a
+*.s
+*.so
+*.so.*
+*.so.dbg
+*.bin
+
+# Python Generated files
+*.pyc
+*.pyo
+
+# cscope files
+cscope.*
+ncscope.*
+
+
+#
+## OS/Editor folders and files
+#
+.DS_Store
+._*
+Thumbs.db
+.cache
+.project
+.settings
+.tmproj
+*.esproj
+nbproject
+*.sublime-project
+*.sublime-workspace
+
+# node.js
+node_modules
+
+
+#
+# User define
+#
+tmp/*
+

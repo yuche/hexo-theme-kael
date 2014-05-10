@@ -74,6 +74,7 @@ html, body, .container, .scroller, #pjax {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
+    overflow: auto;
 }
 
 /* overlays for pusher and for level that gets covered */
@@ -343,6 +344,7 @@ div[data-level='1'] a {
     font-weight: 300;
     font-family: 'Open Sans', Arial, sans-serif;
     line-height: 65px;
+    z-index: 9999;
 }
 
 .nexus {
@@ -429,6 +431,9 @@ ul#toc {
     overflow: hidden;
     padding: 0 10px;
 }
+.post-intro {
+    display: none;
+}
 
 .hidden-box {
     border-top: 0;
@@ -474,12 +479,14 @@ i#scroll-up {
     text-align: center;
     z-index: 1;
     cursor: pointer;
-    -webkit-transition: background-color 0.5s ease;
-    -moz-transition: background-color 0.5s ease;
+    opacity: 0.6;
+    -webkit-transition: all 0.5s ease;
+    -moz-transition: all 0.5s ease;
 }
 
 i#scroll-up:hover {
     background-color: #57A3E8;
+    opacity: 1;
 
 }
 
@@ -589,6 +596,102 @@ i#scroll-up:hover {
     animation: fadeOut .2s;
 }
 
+span.ds-thread-count {
+    display: block;
+    opacity: 0;
+    position: absolute;
+    line-height: 16px;
+    font-size: 14px;
+    left: 710px;
+    text-align: center;
+    background: #bbbbbb;
+    border-radius: 3px;
+    width: 20px;
+    height: 17px;
+    color: white;
+    text-decoration: none;
+    cursor: pointer;
+    background: #bbbbbb;
+    -webkit-border-radius: 2px;
+    -moz-border-radius: 2px;
+    -ms-border-radius: 2px;
+    -o-border-radius: 2px;
+    border-radius: 2px;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+    font-style: normal;
+}
+span.ds-thread-count:hover{
+    opacity: 1;
+    background-color: #57A3E8;
+}
+span.ds-thread-count:hover:after{
+    opacity: 1;
+    border-top-color:#57A3E8 ;
+}
+span.ds-thread-count:after {
+    border-right: 7px solid transparent;
+    border-top: 7px solid #bbbbbb;
+    left:2px;
+    height: 0;
+    width: 0;
+    display: block;
+    content: " ";
+    position: absolute;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -o-transition: all 0.5s;
+    transition: all 0.5s;
+}
+
+.inline-comment {
+    width: 350px;
+    position: absolute;
+    left:750px;
+}
+.post-content {
+    position: relative;
+    -webkit-transition: all 0.5s;
+    -moz-transition: all 0.5s;
+    -ms-transition: all 0.5s;
+    transition: all 0.5s;
+}
+.right {
+    -webkit-transform: translateX(-150px);
+    -moz-transform: translateX(-150px);
+    -ms-transform: translateX(-150px);
+}
+
+.fluidbox {
+    outline: none;
+}
+.fluidbox-overlay {
+    cursor: pointer;
+    cursor: -webkit-zoom-out;
+    cursor: -moz-zoom-out;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: .25s ease-in-out;
+}
+.fluidbox-wrap {
+    background-position: center center;
+    background-size: cover;
+    margin: 0 auto;
+    position: relative;
+    transition: .25s ease-in-out;
+}
+.fluidbox-ghost {
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    transition: .25s ease-in-out;
+}
 @-webkit-keyframes fadeIn {
     from {
         -webkit-transform: translateY(30px);
