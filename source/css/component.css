@@ -74,6 +74,7 @@ html, body, .container, .scroller, #pjax {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
+    overflow: auto;
 }
 
 /* overlays for pusher and for level that gets covered */
@@ -661,6 +662,35 @@ span.ds-thread-count:after {
     -webkit-transform: translateX(-150px);
     -moz-transform: translateX(-150px);
     -ms-transform: translateX(-150px);
+}
+
+.fluidbox {
+    outline: none;
+}
+.fluidbox-overlay {
+    cursor: pointer;
+    cursor: -webkit-zoom-out;
+    cursor: -moz-zoom-out;
+    opacity: 0;
+    position: fixed;
+    top: 0;
+    left: 0;
+    bottom: 0;
+    right: 0;
+    transition: .25s ease-in-out;
+}
+.fluidbox-wrap {
+    background-position: center center;
+    background-size: cover;
+    margin: 0 auto;
+    position: relative;
+    transition: .25s ease-in-out;
+}
+.fluidbox-ghost {
+    background-size: cover;
+    background-position: center center;
+    position: absolute;
+    transition: .25s ease-in-out;
 }
 @-webkit-keyframes fadeIn {
     from {

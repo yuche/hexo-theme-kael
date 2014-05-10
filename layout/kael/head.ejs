@@ -27,7 +27,6 @@
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/screen.css" />
   <meta name="generator" content="<%- config.title %>">
   <script src="http://static.duoshuo.com/embed.js"></script>
-  <script src="//cdn.staticfile.org/modernizr/2.8.1/modernizr.min.js"></script>
   <% if (config.rss) { %>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%- config.rss %>">
   <% } %>
@@ -88,7 +87,7 @@
                                 </form>
                                 <% site.categories.sort('name').each(function(item){ %>
                                 <li class="search-category-li mp-pjax">
-                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;<%= item.name %></a>
+                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;&nbsp;<%= item.name %></a>
                                     <small><%= item.posts.length %></small>
                                 </li>
                                 <% }); %>

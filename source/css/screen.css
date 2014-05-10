@@ -111,7 +111,6 @@ a {
     color: #97A5C0;
     transition: color ease 0.3s;
     text-decoration: none;
-    margin: 0 3px;
 }
 
 a:hover {
@@ -521,6 +520,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 /* Keep large images within the bounds of the post-width */
+.post-excerpt img,
 .post-content img {
     display: block;
     max-width: 100%;

@@ -3,7 +3,6 @@ $("#scroll-up").click(function () {
     $(".scroller").animate({ scrollTop: "10" }, "350");
 });
 var hasPushstate = !!(window.history && history.pushState);
-
 // duoshuo load function
 var duoshuoQuery = {short_name: "yuche"}; // change to your duoshuo name
 function toggleDuoshuoComments(container) {
@@ -16,21 +15,31 @@ function toggleDuoshuoComments(container) {
     jQuery(container).append(el);
 }
 
+//    Generate table of contents
+var generateTOC = function() {
+
+    $(".post-content").find('h1,h2,h3,h4')
+        .each(function (i) {
+            var current = $(this);
+            current.attr("id", "title" + i);
+            $("#toc").append("<li><a id='link" + i + "' href='#title" +
+                i + "' title='" + current.text() + "'>" +
+                current.text() + "</a></li>");
+        });
+
+};
+
+
 
 afterPjax();
 
 function afterPjax() {
 
-
-
-
     postTitle = document.title;
     postHref = window.location.href;
 
 
-
-
-
+    generateTOC();
     //  Mutil-push-menu init
     new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'), {
         type: 'cover'
@@ -41,8 +50,12 @@ function afterPjax() {
     $('img').each( function() {
         var $img = $(this),
             href = $img.attr('src');
-        $img.wrap('<lightbox data-lightbox=a href="' + href + '" title="' + $img.attr('alt') +'"' + '></lightbox>');
+        $img.wrap('<a data-lightbox="a" href="' + href + '" title="' + $img.attr('alt') +'"' + '></a>');
     });
+
+    $('a[data-lightbox="a"]').fluidbox({
+        stackIndex : 1,
+=    });
 
     $(".post-content").find('p,pre,ol,ul,blockquote,lightbox')
         .each(function () {
@@ -67,9 +80,7 @@ function afterPjax() {
         $(this).after('<div class="inline-comment"></div>');
     });
 
-    $('.ds-textarea-wrapper textarea').on('submit', function() {
-        event.preventDefault();
-    })
+
 
     $('.disqus').mouseover(function() {
         $(this).find('span.ds-thread-count').css('opacity','1');
@@ -152,11 +163,11 @@ function afterPjax() {
 
 //    Fixed Multi-level-push-menu for PJAX
     $(".mp-pjax a").click(function () {
+        event.preventDefault();
+        event.stopPropagation();
         var pjaxHref = this.href;
-        $("div#mp-pusher.mp-pusher").trigger("click");
+        $('.scroller').trigger('click');
         if ( hasPushstate ) {
-            event.preventDefault();
-            event.stopPropagation();
             $(".pjax-hidden a").each(function () {
                 if (this.href === pjaxHref) {
                     $(this).trigger('click');
@@ -167,8 +178,7 @@ function afterPjax() {
 
     $("a.back-home").click(function (e) {
         e.preventDefault();
-        e.stopPropagation();
-        $("div#mp-pusher.mp-pusher").trigger('click');
+        $('.scroller').trigger('click');
         $('#nexus-back').trigger('click');
     });
 
@@ -177,12 +187,10 @@ function afterPjax() {
 //  Some JS hacks
 
     $("a.fa-archive,a.fa-copy").click(function () {
-        $(".fa-angle-left").css('opacity', '0')
+        $(".fa-angle-left").css('opacity', '0');
     });
     $(".mp-back").click(function () {
-        $(".fa-angle-left").animate({
-            opacity: 1
-        }, 500);
+        $(".fa-angle-left").css('opacity','1');
     });
 //    Instant search init
     $('input.search-archive').quicksearch('li.search-archive-li');
@@ -191,10 +199,11 @@ function afterPjax() {
 
     isPostPage = false;
 
-    if (location.pathname !== "/") {
-        isPostPage = true;
-    } else {
+    if (location.pathname === "/" || location.pathname.match("/tags/") !== null
+        || location.pathname.match("/categories/") !== null) {
         isPostPage = false;
+    } else {
+        isPostPage = true;
     }
 //    Scroll 500px show Scroll-To-Top button
     $('.scroller').scroll(function () {
@@ -210,22 +219,9 @@ function afterPjax() {
     $("#scroll-up").hide();
 
 
-//    Generate table of contents
-    $(".post-content h1,.post-content h2,.post-content h3,.post-content h4")
-        .each(function (i) {
-        var current = $(this);
-        current.attr("id", "title" + i);
-        $("#toc").append("<li><a id='link" + i + "' href='#title" +
-            i + "' title='" + current.attr("tagName") + "'>" +
-            current.html() + "</a></li>");
-    });
-
 //    If no headline , hide the toc
     if ($('#toc').find('li').length === 0) {
         $('#navbar-toc').hide();
-    } else {
-        // Prepend a headline Introduction for toc
-        $('.post-content').prepend('<h3 class="post-intro">Introduction</h3>');
     }
 //    Scroll 150px show full header
     if (isPostPage) {
@@ -243,6 +239,8 @@ function afterPjax() {
             if (scroll2top > 150) {
                 $('.nexus').css('width', '100%');
                 $('.post-navbar').show(300);
+                $('#navbar-title a').show();
+
             } else {
                 $('.post-navbar').hide(300);
                 $('.nexus').css('width', 'auto');
@@ -261,12 +259,12 @@ function afterPjax() {
         });
     }
 //    Smooth Scroll for the TOC in header
-    $('#toc a').click(function () {
+    $('#toc a').click(function (e) {
         var headID = $(this).attr('href');
         var headIDpos = $(headID).position().top;
         $('.scroller').animate({ scrollTop: headIDpos + 200 }, 'linear');
 
-        return false;
+        e.preventDefault();
     });
 
 //    Hover TOC navbar to show
@@ -289,6 +287,7 @@ function afterPjax() {
         $('.post-content').find(headI).each(function () {
             var $this = $(this);
             $this.waypoint(function () {
+                $('#navbar-toc').show();
                 var tocText = $this.text();
                 $('#toc-content').text(tocText);
             }, {
@@ -308,6 +307,7 @@ function afterPjax() {
 
 };
 //      PJAX init
+$.pjax.maxCacheLength = 0;
 $(document).pjax('a[data-pjax]', '#pjax', { fragment: '#pjax', timeout: 10000 });
 $(document).on({
     'pjax:click': function () {
@@ -322,6 +322,17 @@ $(document).on({
         $('.scroller').scrollTop(0);
         $('.scroller').css({'opacity': 1}).removeClass('fadeOut').addClass('fadeIn');
         afterPjax();
+        $('#navbar-toc').hide();
+        $('.nexus').css('width', 'auto');
+        $('#navbar-title a').hide();
+
+
+    },
+    'pjax:popstate': function () {
+        setTimeout("$('#toc').find('li').remove();",100);
+        setTimeout("generateTOC()",200);
+        setTimeout("$('#comment-box').children().remove();",100);
+
     }
 });
 
