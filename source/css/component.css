@@ -14,6 +14,10 @@ html, body, .container, .scroller, #pjax {
     overflow-y: scroll;
 }
 
+.mp-scroll {
+    height: 500px;
+    overflow: auto;
+}
 .scroller,
 .scroller-inner, #pjax {
     position: relative;
@@ -74,7 +78,6 @@ html, body, .container, .scroller, #pjax {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
-    overflow: auto;
 }
 
 /* overlays for pusher and for level that gets covered */
@@ -596,7 +599,7 @@ i#scroll-up:hover {
     animation: fadeOut .2s;
 }
 
-   /*Multiple DUOSHUO threads for PJAX START*/
+/*Multiple DUOSHUO threads for PJAX START*/
 
 span.ds-thread-count {
     display: block;
@@ -661,12 +664,12 @@ span.ds-thread-count:after {
     transition: all 0.5s;
 }
 .right {
-    -webkit-transform: translateX(-150px);
-    -moz-transform: translateX(-150px);
-    -ms-transform: translateX(-150px);
+    -webkit-transform: translateX(-200px);
+    -moz-transform: translateX(-200px);
+    -ms-transform: translateX(-200px);
 }
 
-   /*Multiple DUOSHUO threads for PJAX END*/
+/*Multiple DUOSHUO threads for PJAX END*/
 
 
 .fluidbox {

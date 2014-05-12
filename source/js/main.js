@@ -29,7 +29,27 @@ var generateTOC = function() {
 
 };
 
+//   Scroll spy headline
+
+var scrollSpy = function(){
+    for (var i = 1; i < 7; i++) {
+        var headI = 'h' + i;
+        $('#toc-content').text('Introduction');
+        $('.post-content').find(headI).each(function () {
+            var self = $(this);
+            self.waypoint(function () {
+                $('#navbar-toc').show();
+                var tocText = self.text();
+                $('#toc-content').text(tocText);
+            }, {
+                context: '.scroller',
+                offset: 90
+            });
+        });
+    };
+};
 afterPjax();
+
 
 function afterPjax() {
 
@@ -38,6 +58,8 @@ function afterPjax() {
 
 
     generateTOC();
+    setTimeout("scrollSpy()",300);
+
     //  Mutil-push-menu init
     new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'), {
         type: 'cover'
@@ -55,7 +77,7 @@ function afterPjax() {
         stackIndex : 1
     });
 
-    $(".post-content").find('p,pre,ol,ul,blockquote,lightbox')
+    $(".post-content").find('p,pre,ol,ul,blockquote')
         .each(function () {
             $(this).attr("class", "disqus");
             $(this).prepend('<span class="ds-thread-count">+</span>');
@@ -94,7 +116,7 @@ function afterPjax() {
         self.find('span.ds-thread-count').not('.has-comment').css('opacity','0');
     });
 
-    $('span.ds-thread-count').click(function(){
+    $('span.ds-thread-count').click(function(event){
         var self = $(this);
         if ($('span.ds-thread-count').not(self).hasClass('active')){
             var l = $('span.ds-thread-count').filter('.active');
@@ -108,16 +130,29 @@ function afterPjax() {
             var identifier =  postTitle + $(this).attr('id');
             if (!inlineComment.hasClass('loaded')){
                 loadInlineComment(inlineComment,identifier);
-
             }
         } else {
             hideInlineComment(self,self.next());
         }
-
+        event.stopPropagation();
     });
 
 
-    // Hide the discussion.
+    // detect a click outside the trigger.
+
+    $('html').click(function() {
+        var triggerOpened = $('span.ds-thread-count').filter('.active');
+        triggerOpened.removeClass('active');
+        if(triggerOpened.next().is(":visible")) {
+            triggerOpened.next().fadeOut();
+        }
+        $(".post-content").filter('.right').removeClass('right');
+    });
+
+    $('.inline-comment').click(function(){
+        event.stopPropagation();
+
+    })
 
 
     var hideInlineComment = function(trigger,comment) {
@@ -166,9 +201,9 @@ function afterPjax() {
     });
 
 //    Fixed Multi-level-push-menu for PJAX
-    $(".mp-pjax a").click(function () {
-        event.preventDefault();
-        event.stopPropagation();
+    $(".mp-pjax a").click(function (e) {
+        e.preventDefault();
+        e.stopPropagation();
         var pjaxHref = this.href;
         $('.scroller').trigger('click');
         if ( hasPushstate ) {
@@ -190,7 +225,7 @@ function afterPjax() {
 
 //  Some JS hacks
 
-    $("a.fa-archive,a.fa-copy").click(function () {
+    $("a.fa-archive,a.fa-copy,a.fa-tags").click(function () {
         $(".fa-angle-left").css('opacity', '0');
     });
     $(".mp-back").click(function () {
@@ -201,10 +236,13 @@ function afterPjax() {
     $('input.search-category').quicksearch('li.search-category-li');
     $('input.search-tag').quicksearch('li.search-tag-li');
 
+//    Detect URL is Post page or NOT
+
     isPostPage = false;
 
     if (location.pathname === "/" || location.pathname.match("/tags/") !== null
-        || location.pathname.match("/categories/") !== null) {
+        || location.pathname.match("/categories/") !== null ||
+        location.pathname.match("/page/") !== null) {
         isPostPage = false;
     } else {
         isPostPage = true;
@@ -266,6 +304,7 @@ function afterPjax() {
     $('#toc a').click(function (e) {
         var headID = $(this).attr('href');
         var headIDpos = $(headID).position().top;
+        console.log(headIDpos);
         $('.scroller').animate({ scrollTop: headIDpos + 200 }, 'linear');
 
         e.preventDefault();
@@ -273,33 +312,16 @@ function afterPjax() {
 
 //    Hover TOC navbar to show
     $('#navbar-toc').hover(function () {
-        /*图标向上旋转*/
         $('#navbar-toc i').removeClass('hover-down').addClass("hover-up");
-        /*下拉框出现*/
         $('.hidden-box').slideDown();
     }, function () {
-        /*图标向下旋转*/
         $('#navbar-toc i').removeClass('hover-up').addClass("hover-down");
-        /*下拉框消失*/
         $('.hidden-box').slideUp();
     });
 
 
-//    Scroll spy for TOC navbar
-    for (var i = 1; i < 7; i++) {
-        var headI = 'h' + i;
-        $('.post-content').find(headI).each(function () {
-            var $this = $(this);
-            $this.waypoint(function () {
-                $('#navbar-toc').show();
-                var tocText = $this.text();
-                $('#toc-content').text(tocText);
-            }, {
-                context: '.scroller',
-                offset: 90
-            });
-        });
-    }
+
+
 //    Reset Header
     if (isPostPage) {
         var headTitle = $('h1.post-title').text();
@@ -311,19 +333,18 @@ function afterPjax() {
 
 };
 //      PJAX init
-$(document).pjax('a[data-pjax]', '#pjax', { fragment: '#pjax', timeout: 10000 });
+$(document).pjax('a[data-pjax]', '.container', { fragment: '.container', timeout: 10000 });
 $(document).on({
     'pjax:click': function () {
         $('.scroller').removeClass('fadeIn').addClass('fadeOut');
         NProgress.start();
     },
     'pjax:start': function () {
-        $('.scroller').css({'opacity': 0});
+        $('.scroller').css('opacity','0');
     },
     'pjax:end': function () {
         NProgress.done();
-        $('.scroller').scrollTop(0);
-        $('.scroller').css({'opacity': 1}).removeClass('fadeOut').addClass('fadeIn');
+        $('.scroller').css('opacity','1').removeClass('fadeOut').addClass('fadeIn');
         afterPjax();
         $('#navbar-toc').hide();
         $('.nexus').css('width', 'auto');
@@ -333,8 +354,7 @@ $(document).on({
         setTimeout("$('#toc').find('li').remove();",100);
         setTimeout("generateTOC()",200);
         setTimeout("$('#comment-box').children().remove();",100);
-
-    }
+    },
 });
 
 
