@@ -52,7 +52,7 @@ body {
     font-size: 2.0rem;
     line-height: 1.6em;
     color: #3A4145;
-    background: #f7f7f7;
+    background: white;
 }
 
 ::-moz-selection {
@@ -72,7 +72,7 @@ h4, h5, h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
     margin-top: 0;
-    font-family: 'Open Sans','Helvetica Neue','Helvetica',Arial,"Kai","Kaiti SC","KaiTi","BiauKai","楷体","楷体_GB2312",serif;
+    font-family: 'Open Sans','Helvetica Neue','Helvetica',Arial,"STKaiti","Kai","Kaiti SC","KaiTi","BiauKai","楷体","楷体_GB2312",serif;
     font-weight: 700;
 
 }
@@ -108,7 +108,7 @@ h6 {
 }
 
 a {
-    color: #4a4a4a;
+    color: #97A5C0;
     transition: color ease 0.3s;
     text-decoration: none;
 }
@@ -323,6 +323,7 @@ margin on the iframe, cause it breaks stuff. */
     margin-top: 100px;
 }
 
+
 /* ==========================================================================
    4. General - The main styles for the the theme
    ========================================================================== */
@@ -411,7 +412,11 @@ margin on the iframe, cause it breaks stuff. */
 
 .post-title a {
     text-decoration: none;
-    line-height: 2em;
+    line-height: 1.5em;
+}
+
+.post-content li {
+    font-size: 18px;
 }
 
 .tag-tile a {
@@ -519,12 +524,15 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 /* Keep large images within the bounds of the post-width */
+.post-excerpt img,
 .post-content img {
     display: block;
     max-width: 100%;
     margin: 0 auto;
     height: auto;
 }
+
+
 
 .post p {
     font-size: 18px;
@@ -908,6 +916,7 @@ pre .chunk {
     color: #50585D;
 }
 
+
 /* CSS tooltip saying "Subscribe!" - initially hidden */
 .tooltip {
     opacity:0;
@@ -957,6 +966,7 @@ pre .chunk {
     blockquote {
         margin-left: 0;
     }
+
 
     .site-head {
         -webkit-box-sizing: border-box;
@@ -1029,8 +1039,8 @@ pre .chunk {
     }
 
     .post-content p {
-        font-size: 16px;
-        line-height: 28px;
+        font-size: 14px;
+        line-height: 24px;
     }
 
     .inner,

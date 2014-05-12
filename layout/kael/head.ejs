@@ -26,9 +26,7 @@
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/component.css" />
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/screen.css" />
   <meta name="generator" content="<%- config.title %>">
-    <script src="//cdn.staticfile.org/modernizr/2.7.1/modernizr.min.js"></script>
-    <script></script>
-    <script src="http://static.duoshuo.com/embed.js"></script>
+  <script src="http://static.duoshuo.com/embed.js"></script>
   <% if (config.rss) { %>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%- config.rss %>">
   <% } %>
@@ -49,13 +47,11 @@
 </head>
 <body>
 <div class="container">
-
     <div class="mp-pusher" id="mp-pusher">
         <i id="scroll-up" class="fa fa-angle-up"></i>
-
         <nav id="mp-menu" class="mp-menu">
             <div class="mp-level">
-                <a class="back-home" style="font-size: 20px" href="<%- config.root %>"><h2 ><i class="fa fa-home"></i>
+                <a data-pjax class="back-home" style="font-size: 20px" href="<%- config.root %>"><h2 ><i class="fa fa-home"></i>
                         Home</h2></a>
                 <ul class="first-level">
                     <li>
@@ -65,15 +61,17 @@
                             <h2 ><i class="fa fa-archive"></i>
                                 Archive</h2>
                             <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-archive" placeholder="Search.."/>
+                            </form>
                             <ul>
-                                <form id="search-form" action="">
-                                    <input type="text" class="search search-archive" placeholder="Search.."/>
-                                </form>
+                                <div class="mp-scroll">
                                 <% site.posts.sort('date', -1).each(function(post){ %>
                                 <li class="search-archive-li mp-pjax">
                                     <a href="<%= config.root %><%= post.path %>"><%= post.title %></a>
                                 </li>
                                 <% }); %>
+                                </div>
                             </ul>
                         </div>
                     </li>
@@ -85,41 +83,57 @@
                             <h2 ><i class="fa fa-copy"></i>
                                 Categories</h2>
                             <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-category" placeholder="Search.."/>
+                            </form>
                             <ul>
-                                <form id="search-form" action="">
-                                    <input type="text" class="search search-category" placeholder="Search.."/>
-                                </form>
+                                <div class="mp-scroll">
                                 <% site.categories.sort('name').each(function(item){ %>
                                 <li class="search-category-li mp-pjax">
-                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;<%= item.name %></a>
+                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;&nbsp;<%= item.name %></a>
                                     <small><%= item.posts.length %></small>
                                 </li>
                                 <% }); %>
+                                </div>
                             </ul>
                         </div>
                     </li>
                     <li>
-                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;Tags</a>
-
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
+                            </i>&nbsp;&nbsp;Tags</a>
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-tags"></i>
                                 Tags</h2>
                             <a class="mp-back" href="#">back</a>
+                            <form id="search-form" action="">
+                                <input type="text" class="search search-tag" placeholder="Search.."/>
+                            </form>
                             <ul>
-                                <form id="search-form" action="">
-                                    <input type="text" class="search search-tag" placeholder="Search.."/>
-                                </form>
+                                <div class="mp-scroll">
                                 <% site.tags.sort('name').each(function(item){ %>
                                 <li class="search-tag-li mp-pjax">
-                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;<%= item.name %></a>
+                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;&nbsp;<%= item.name %></a>
                                     <small><%= item.posts.length %></small>
                                 </li>
                                 <% }); %>
+                                </div>
                             </ul>
                         </div>
                     </li>
+                    <% if (theme.weibo_show) { %>
+                    <li>
+                        <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;Weibo Show</a>
+
+                        <div class="mp-level page-list">
+                            <h2 ><i class="fa fa-weibo"></i>
+                                Weibo Show</h2>
+                            <a class="mp-back" href="#">back</a>
+                        </div>
+                    </li>
+                    <% } %>
                     <li class="mp-pjax"><a class="fa fa-user" href="<%= config.root %>about">&nbsp;&nbsp;&nbsp;About me</a></li>
                     <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
+
                 </ul>
 
             </div>
