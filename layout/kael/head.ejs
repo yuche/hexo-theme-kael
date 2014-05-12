@@ -26,7 +26,13 @@
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/component.css" />
   <link rel="stylesheet" type="text/css" href="<%- config.root %>css/screen.css" />
   <meta name="generator" content="<%- config.title %>">
+<<<<<<< HEAD
   <script src="http://static.duoshuo.com/embed.js"></script>
+=======
+    <script src="//cdn.staticfile.org/modernizr/2.7.1/modernizr.min.js"></script>
+    <script></script>
+    <script src="http://static.duoshuo.com/embed.js"></script>
+>>>>>>> temp
   <% if (config.rss) { %>
   <link rel="alternate" type="application/rss+xml" title="RSS" href="<%- config.rss %>">
   <% } %>
@@ -47,11 +53,21 @@
 </head>
 <body>
 <div class="container">
+<<<<<<< HEAD
     <div class="mp-pusher" id="mp-pusher">
         <i id="scroll-up" class="fa fa-angle-up"></i>
         <nav id="mp-menu" class="mp-menu">
             <div class="mp-level">
                 <a data-pjax class="back-home" style="font-size: 20px" href="<%- config.root %>"><h2 ><i class="fa fa-home"></i>
+=======
+
+    <div class="mp-pusher" id="mp-pusher">
+        <i id="scroll-up" class="fa fa-angle-up"></i>
+
+        <nav id="mp-menu" class="mp-menu">
+            <div class="mp-level">
+                <a class="back-home" style="font-size: 20px" href="<%- config.root %>"><h2 ><i class="fa fa-home"></i>
+>>>>>>> temp
                         Home</h2></a>
                 <ul class="first-level">
                     <li>
@@ -61,17 +77,27 @@
                             <h2 ><i class="fa fa-archive"></i>
                                 Archive</h2>
                             <a class="mp-back" href="#">back</a>
+<<<<<<< HEAD
                             <form id="search-form" action="">
                                 <input type="text" class="search search-archive" placeholder="Search.."/>
                             </form>
                             <ul>
                                 <div class="mp-scroll">
+=======
+                            <ul>
+                                <form id="search-form" action="">
+                                    <input type="text" class="search search-archive" placeholder="Search.."/>
+                                </form>
+>>>>>>> temp
                                 <% site.posts.sort('date', -1).each(function(post){ %>
                                 <li class="search-archive-li mp-pjax">
                                     <a href="<%= config.root %><%= post.path %>"><%= post.title %></a>
                                 </li>
                                 <% }); %>
+<<<<<<< HEAD
                                 </div>
+=======
+>>>>>>> temp
                             </ul>
                         </div>
                     </li>
@@ -83,6 +109,7 @@
                             <h2 ><i class="fa fa-copy"></i>
                                 Categories</h2>
                             <a class="mp-back" href="#">back</a>
+<<<<<<< HEAD
                             <form id="search-form" action="">
                                 <input type="text" class="search search-category" placeholder="Search.."/>
                             </form>
@@ -95,16 +122,34 @@
                                 </li>
                                 <% }); %>
                                 </div>
+=======
+                            <ul>
+                                <form id="search-form" action="">
+                                    <input type="text" class="search search-category" placeholder="Search.."/>
+                                </form>
+                                <% site.categories.sort('name').each(function(item){ %>
+                                <li class="search-category-li mp-pjax">
+                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;<%= item.name %></a>
+                                    <small><%= item.posts.length %></small>
+                                </li>
+                                <% }); %>
+>>>>>>> temp
                             </ul>
                         </div>
                     </li>
                     <li>
+<<<<<<< HEAD
                         <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
                             </i>&nbsp;&nbsp;Tags</a>
+=======
+                        <a class="fa fa-tags" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;Tags</a>
+
+>>>>>>> temp
                         <div class="mp-level page-list">
                             <h2 ><i class="fa fa-tags"></i>
                                 Tags</h2>
                             <a class="mp-back" href="#">back</a>
+<<<<<<< HEAD
                             <form id="search-form" action="">
                                 <input type="text" class="search search-tag" placeholder="Search.."/>
                             </form>
@@ -134,6 +179,23 @@
                     <li class="mp-pjax"><a class="fa fa-user" href="<%= config.root %>about">&nbsp;&nbsp;&nbsp;About me</a></li>
                     <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
 
+=======
+                            <ul>
+                                <form id="search-form" action="">
+                                    <input type="text" class="search search-tag" placeholder="Search.."/>
+                                </form>
+                                <% site.tags.sort('name').each(function(item){ %>
+                                <li class="search-tag-li mp-pjax">
+                                    <a href="<%- config.root %><%- item.path %>">&nbsp;&nbsp;<%= item.name %></a>
+                                    <small><%= item.posts.length %></small>
+                                </li>
+                                <% }); %>
+                            </ul>
+                        </div>
+                    </li>
+                    <li class="mp-pjax"><a class="fa fa-user" href="<%= config.root %>about">&nbsp;&nbsp;&nbsp;About me</a></li>
+                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
+>>>>>>> temp
                 </ul>
 
             </div>

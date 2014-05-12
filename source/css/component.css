@@ -6,6 +6,7 @@
     box-sizing: border-box;
 }
 
+<<<<<<< HEAD
 html, body, .container, .scroller, #pjax {
     height: 100%;
 }
@@ -52,11 +53,55 @@ html, body, .container, .scroller, #pjax {
 }
 
 .mp-level a {
+=======
+html, body, .container, .scroller,#pjax {
+	height: 100%;
+}
+
+.scroller {
+	overflow-y: scroll;
+}
+
+.scroller,
+.scroller-inner,#pjax  {
+	position: relative;
+}
+
+.container {
+	position: relative;
+	overflow: hidden;
+}
+
+.menu-trigger {
+	position: relative;
+	padding-left: 60px;
+	font-size: 0.9em;
+}
+
+.menu-trigger:before {
+	position: absolute;
+	top: 2px;
+	left: 0;
+	width: 40px;
+	height: 6px;
+	background: #fff;
+	box-shadow: 0 6px #34495e, 0 12px #fff, 0 18px #34495e, 0 24px #fff;
+	content: '';
+}
+
+.mp-pusher {
+	position: relative;
+	left: 0;
+	height: 100%;
+}
+.mp-level a{
+>>>>>>> temp
     font-weight: 300;
     text-decoration: none;
 }
 
 .mp-menu {
+<<<<<<< HEAD
     position: absolute; /* we can't use fixed here :( */
     top: 0;
     left: 0;
@@ -78,12 +123,36 @@ html, body, .container, .scroller, #pjax {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
+=======
+	position: absolute; /* we can't use fixed here :( */
+	top: 0;
+	left: 0;
+	z-index: 1;
+	width: 300px;
+	height: 100%;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+}
+
+.mp-level {
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background: white;
+	-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+>>>>>>> temp
 }
 
 /* overlays for pusher and for level that gets covered */
 .mp-pusher::after,
 .mp-level::after,
 .mp-level::before {
+<<<<<<< HEAD
     position: absolute;
     top: 0;
     right: 0;
@@ -91,10 +160,20 @@ html, body, .container, .scroller, #pjax {
     height: 0;
     content: '';
     opacity: 0;
+=======
+	position: absolute;
+	top: 0;
+	right: 0;
+	width: 0;
+	height: 0;
+	content: '';
+	opacity: 0;
+>>>>>>> temp
 }
 
 .mp-pusher::after,
 .mp-level::after {
+<<<<<<< HEAD
     background: rgba(0, 0, 0, 0.3);
     -webkit-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
     -moz-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
@@ -103,10 +182,21 @@ html, body, .container, .scroller, #pjax {
 
 .mp-level::after {
     z-index: -1;
+=======
+	background: rgba(0,0,0,0.3);
+	-webkit-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+	-moz-transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+	transition: opacity 0.3s, width 0.1s 0.3s, height 0.1s 0.3s;
+}
+
+.mp-level::after {
+	z-index: -1;
+>>>>>>> temp
 }
 
 .mp-pusher.mp-pushed::after,
 .mp-level.mp-level-overlay::after {
+<<<<<<< HEAD
     width: 100%;
     height: 100%;
     opacity: 1;
@@ -124,21 +214,53 @@ html, body, .container, .scroller, #pjax {
     height: 100%;
     background: transparent;
     opacity: 1;
+=======
+	width: 100%;
+	height: 100%;
+	opacity: 1;
+	-webkit-transition: opacity 0.3s;
+	-moz-transition: opacity 0.3s;
+	transition: opacity 0.3s;
+}
+
+.mp-level.mp-level-overlay {
+	cursor: pointer;
+}
+
+.mp-level.mp-level-overlay.mp-level::before {
+	width: 100%;
+	height: 100%;
+	background: transparent;
+	opacity: 1;
+>>>>>>> temp
 }
 
 .mp-pusher,
 .mp-level {
+<<<<<<< HEAD
     -webkit-transition: all 0.5s;
     -moz-transition: all 0.5s;
     transition: all 0.5s;
+=======
+	-webkit-transition: all 0.5s;
+	-moz-transition: all 0.5s;
+	transition: all 0.5s;
+>>>>>>> temp
 }
 
 /* overlap */
 .mp-overlap .mp-level.mp-level-open {
+<<<<<<< HEAD
     box-shadow: 1px 0 2px rgba(0, 0, 0, 0.2);
     -webkit-transform: translate3d(-40px, 0, 0);
     -moz-transform: translate3d(-40px, 0, 0);
     transform: translate3d(-40px, 0, 0);
+=======
+	box-shadow: 1px 0 2px rgba(0,0,0,0.2);
+	-webkit-transform: translate3d(-40px, 0, 0);
+	-moz-transform: translate3d(-40px, 0, 0);
+	transform: translate3d(-40px, 0, 0);
+>>>>>>> temp
 }
 
 /* First level */
@@ -146,14 +268,22 @@ html, body, .container, .scroller, #pjax {
 .mp-menu > .mp-level.mp-level-open,
 .mp-menu.mp-overlap > .mp-level,
 .mp-menu.mp-overlap > .mp-level.mp-level-open {
+<<<<<<< HEAD
     box-shadow: none;
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
+=======
+	box-shadow: none;
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+>>>>>>> temp
 }
 
 /* cover */
 .mp-cover .mp-level.mp-level-open {
+<<<<<<< HEAD
     -webkit-transform: translate3d(0, 0, 0);
     -moz-transform: translate3d(0, 0, 0);
     transform: translate3d(0, 0, 0);
@@ -163,10 +293,22 @@ html, body, .container, .scroller, #pjax {
     -webkit-transform: translate3d(-100%, 0, 0);
     -moz-transform: translate3d(-100%, 0, 0);
     transform: translate3d(-100%, 0, 0);
+=======
+	-webkit-transform: translate3d(0, 0, 0);
+	-moz-transform: translate3d(0, 0, 0);
+	transform: translate3d(0, 0, 0);
+}
+
+.mp-cover .mp-level.mp-level-open > ul > li > .mp-level:not(.mp-level-open) {
+	-webkit-transform: translate3d(-100%, 0, 0);
+	-moz-transform: translate3d(-100%, 0, 0);
+	transform: translate3d(-100%, 0, 0);
+>>>>>>> temp
 }
 
 /* content style */
 .mp-menu ul {
+<<<<<<< HEAD
     margin: 0;
     padding: 0;
     list-style: none;
@@ -228,12 +370,75 @@ html, body, .container, .scroller, #pjax {
     color: #5f6f81;
 }
 
+=======
+	margin: 0;
+	padding: 0;
+	list-style: none;
+}
+
+.mp-menu h2 {
+	margin: 0;
+	padding: 1em;
+	color: rgba(0,0,0,0.4);
+	text-shadow: 0 0 1px rgba(0,0,0,0.1);
+	font-weight: 300;
+	font-size: 2em;
+    font-family: 'Open Sans',sans-serif;
+}
+
+.mp-menu.mp-overlap h2::before {
+	position: absolute;
+	top: 0;
+	right: 0;
+	margin-right: 8px;
+	font-size: 75%;
+	line-height: 1.8;
+	opacity: 0;
+	-webkit-transition: opacity 0.3s, -webkit-transform 0.1s 0.3s;
+	-moz-transition: opacity 0.3s, -moz-transform 0.1s 0.3s;
+	transition: opacity 0.3s, transform 0.1s 0.3s;
+	-webkit-transform: translateX(-100%);
+	-moz-transform: translateX(-100%);
+	transform: translateX(-100%);
+}
+
+.mp-menu.mp-cover h2 {
+	font-weight: 700;
+	letter-spacing: 1px;
+	font-size: 1em;
+}
+
+.mp-overlap .mp-level.mp-level-overlay > h2::before {
+	opacity: 1;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.3s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.3s;
+	transition: transform 0.3s, opacity 0.3s;
+	-webkit-transform: translateX(0);
+	-moz-transform: translateX(0);
+	transform: translateX(0);
+}
+
+.mp-menu ul li > a {
+	display: block;
+	padding: 0.7em 1em 0.7em 1.8em;
+	outline: none;
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2);
+	text-shadow: 0 0 1px rgba(255,255,255,0.1);
+	-webkit-transition: background 0.3s, box-shadow 0.3s;
+	-moz-transition: background 0.3s, box-shadow 0.3s;
+	transition: background 0.3s, box-shadow 0.3s;
+    text-decoration: none;
+    text-transform: capitalize;
+    color:#5f6f81;
+}
+>>>>>>> temp
 .search {
     border: none;
     outline: none;
     -webkit-appearance: none;
     padding: 0.7em 1em 0.7em 1.6em;
     background: white;
+<<<<<<< HEAD
     color: #0099cc;
 }
 
@@ -241,11 +446,20 @@ html, body, .container, .scroller, #pjax {
     height: 65px;
     border-bottom: 1px solid rgba(0, 0, 0, 0.2);
     text-shadow: 0 0 1px rgba(255, 255, 255, 0.1);
+=======
+    color:#0099cc;
+}
+#search-form {
+    height: 65px;
+    border-bottom: 1px solid rgba(0,0,0,0.2);
+    text-shadow: 0 0 1px rgba(255,255,255,0.1);
+>>>>>>> temp
     -webkit-transition: background 0.3s, box-shadow 0.3s;
     -moz-transition: background 0.3s, box-shadow 0.3s;
     transition: background 0.3s, box-shadow 0.3s;
 }
 
+<<<<<<< HEAD
 .page-list ul li {
     position: relative;
 }
@@ -276,16 +490,54 @@ div[data-level='1'] a {
 
 .mp-level > ul > li:first-child > a {
     box-shadow: inset 0 -1px rgba(0, 0, 0, 0.2), inset 0 1px rgba(0, 0, 0, 0.2);
+=======
+
+.page-list ul li {
+    position: relative;
+}
+div[data-level='2'] a{
+    font-size: 0.8em!important;
+}
+div[data-level='1'] a{
+    font-size: 22px;
+    font-family: 'Open Sans','FontAwesome',sans-serif;
+    font-weight: 500;
+}
+.page-list ul li > small{
+    position: absolute;
+    top:12px;
+    left:1em;
+}
+
+
+
+.mp-menu ul li::before {
+	position: absolute;
+	left: 10px;
+	z-index: -1;
+	color: rgba(0,0,0,0.2);
+	line-height: 3.5;
+}
+
+.mp-level > ul > li:first-child > a {
+	box-shadow: inset 0 -1px rgba(0,0,0,0.2), inset 0 1px rgba(0,0,0,0.2);
+>>>>>>> temp
 }
 
 .mp-menu ul li a:hover,
 .mp-level > ul > li:first-child > a:hover {
+<<<<<<< HEAD
     background: rgba(0, 0, 0, 0.2);
     box-shadow: inset 0 -1px rgba(0, 0, 0, 0);
+=======
+	background: rgba(0,0,0,0.2);
+	box-shadow: inset 0 -1px rgba(0,0,0,0);
+>>>>>>> temp
 }
 
 .mp-menu .mp-level.mp-level-overlay > ul > li > a,
 .mp-level.mp-level-overlay > ul > li:first-child > a {
+<<<<<<< HEAD
     box-shadow: inset 0 -1px rgba(0, 0, 0, 0);
 }
 
@@ -313,6 +565,36 @@ div[data-level='1'] a {
     right: 10px;
     font-size: 1.3em;
     color: rgba(0, 0, 0, 0.3);
+=======
+	box-shadow: inset 0 -1px rgba(0,0,0,0);
+}
+
+
+.mp-back {
+	background: rgba(0,0,0,0.1);
+	outline: none;
+	color: #fff;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 700;
+	display: block;
+	font-size: 0.8em;
+	padding: 1em;
+	position: relative;
+	box-shadow: inset 0 1px rgba(0,0,0,0.1);
+	-webkit-transition: background 0.3s;
+	-moz-transition: background 0.3s;
+	transition: background 0.3s;
+}
+
+.mp-back::after {
+	font-family: 'FontAwesome';
+	position: absolute;
+    content: "\f0da";
+	right: 10px;
+	font-size: 1.3em;
+	color: rgba(0,0,0,0.3);
+>>>>>>> temp
 }
 
 .mp-left::after {
@@ -321,6 +603,7 @@ div[data-level='1'] a {
     content: "\f104";
 
     font-size: 1.3em;
+<<<<<<< HEAD
     color: rgba(0, 0, 0, 0.3);
 }
 
@@ -336,6 +619,20 @@ div[data-level='1'] a {
     color: transparent;
 }
 
+=======
+    color: rgba(0,0,0,0.3);
+}
+.fa-angle-left{
+    position: absolute;
+    left: 10px;
+}
+.mp-menu .mp-level.mp-level-overlay > .mp-back,
+.mp-menu .mp-level.mp-level-overlay > .mp-back::after {
+	background: transparent;
+	box-shadow: none;
+	color: transparent;
+}
+>>>>>>> temp
 .nexus,
 .nexus ul {
     margin: 0;
@@ -347,7 +644,10 @@ div[data-level='1'] a {
     font-weight: 300;
     font-family: 'Open Sans', Arial, sans-serif;
     line-height: 65px;
+<<<<<<< HEAD
     z-index: 9999;
+=======
+>>>>>>> temp
 }
 
 .nexus {
@@ -360,7 +660,10 @@ div[data-level='1'] a {
     border-bottom: 1px solid #c6d0da;
 
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> temp
 .nexus li {
     display: block;
     float: left;
@@ -368,7 +671,10 @@ div[data-level='1'] a {
     border-right: 1px solid #c6d0da;
     text-align: center;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> temp
 .nexus a {
     display: block;
     height: 100%;
@@ -380,6 +686,7 @@ div[data-level='1'] a {
     font-weight: bold;
 
 }
+<<<<<<< HEAD
 
 .nexus li a:hover {
     background: #5f6f81;
@@ -390,10 +697,20 @@ div[data-level='1'] a {
     border: none;
 }
 
+=======
+.nexus li a:hover{
+    background: #5f6f81;
+    color: white;
+}
+#navbar-title {
+    border: none;
+}
+>>>>>>> temp
 #navbar-title a {
     padding-left: 0;
     cursor: default;
 }
+<<<<<<< HEAD
 
 #navbar-title a:hover {
     color: #5f6f81;
@@ -418,20 +735,46 @@ div[data-level='1'] a {
     margin: 0 auto;
 }
 
+=======
+#navbar-title a:hover {
+    color: #5f6f81;
+    background: white;
+}
+#navbar-toc {
+    float:right;border-left: 1px solid #c6d0da;
+}
+#navbar-toc i {
+    color: #0099cc;margin-left: 10px;font-weight: bold;
+}
+
+.post-navbar {
+    width:80%;
+    max-width: 700px;
+    margin: 0 auto;
+}
+>>>>>>> temp
 ul#toc {
     list-style-type: none;
     margin: 0;
     padding: 0;
     max-height: 521px;
     overflow-x: hidden;
+<<<<<<< HEAD
     overflow: auto;
 }
 
 #toc a {
+=======
+    overflow:auto ;
+}
+
+#toc a{
+>>>>>>> temp
     font-size: 12px;
     font-weight: 600;
     display: block;
     overflow: hidden;
+<<<<<<< HEAD
     padding: 0 10px;
 }
 .post-intro {
@@ -439,35 +782,59 @@ ul#toc {
 }
 
 .hidden-box {
+=======
+    padding:0 10px;
+}
+.hidden-box{
+>>>>>>> temp
     border-top: 0;
     display: none;
     top: 30px;
     overflow: auto;
 }
+<<<<<<< HEAD
 
 .hidden-box li {
     display: list-item;
     float: none;
+=======
+.hidden-box li {
+    display: list-item;
+    float:none;
+>>>>>>> temp
     border: none;
     border-bottom: 1px solid #c6d0da;
     height: auto;
 }
+<<<<<<< HEAD
 
 .hover-up {
+=======
+.hover-up{
+>>>>>>> temp
     transition-duration: .5s;
     transform: rotate(180deg);
     -webkit-transform: rotate(180deg);
 }
+<<<<<<< HEAD
 
 /*图标向下旋转*/
 .hover-down {
+=======
+/*图标向下旋转*/
+.hover-down{
+>>>>>>> temp
     transition-duration: .5s;
     transform: rotate(0deg);
     -webkit-transform: rotate(0deg);
 }
 
 i#scroll-up {
+<<<<<<< HEAD
     display: none;
+=======
+    display:none;
+>>>>>>> temp
     position: fixed;
     bottom: 20px;
     right: 20px;
@@ -475,6 +842,7 @@ i#scroll-up {
     border-radius: 50%;
     color: white;
     background-color: #5f6f81;
+<<<<<<< HEAD
     font-size: 40px;
     display: block;
     height: 40px;
@@ -493,6 +861,22 @@ i#scroll-up:hover {
 
 }
 
+=======
+    font-size:40px;
+    display:block;
+    height:40px;
+    width:40px;
+    text-align:center;
+    z-index:1;
+    cursor: pointer;
+    -webkit-transition:background-color 0.5s ease;
+    -moz-transition:background-color 0.5s ease;
+}
+i#scroll-up:hover {
+    background-color:#57A3E8;
+
+}
+>>>>>>> temp
 .popover {
     position: absolute;
     top: 0;
@@ -511,6 +895,7 @@ i#scroll-up:hover {
     -webkit-box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
     box-shadow: 0 5px 10px rgba(0, 0, 0, .2);
 }
+<<<<<<< HEAD
 
 .popover.top {
     margin-top: -10px;
@@ -528,6 +913,20 @@ i#scroll-up:hover {
     margin-left: -10px;
 }
 
+=======
+.popover.top {
+    margin-top: -10px;
+}
+.popover.right {
+    margin-left: 10px;
+}
+.popover.bottom {
+    margin-top: 10px;
+}
+.popover.left {
+    margin-left: -10px;
+}
+>>>>>>> temp
 .popover-title {
     padding: 8px 14px;
     margin: 0;
@@ -538,11 +937,17 @@ i#scroll-up:hover {
     border-bottom: 1px solid #ebebeb;
     border-radius: 5px 5px 0 0;
 }
+<<<<<<< HEAD
 
 .popover-content {
     padding: 9px 14px;
 }
 
+=======
+.popover-content {
+    padding: 9px 14px;
+}
+>>>>>>> temp
 .popover > .arrow,
 .popover > .arrow:after {
     position: absolute;
@@ -552,11 +957,17 @@ i#scroll-up:hover {
     border-color: transparent;
     border-style: solid;
 }
+<<<<<<< HEAD
 
 .popover > .arrow {
     border-width: 11px;
 }
 
+=======
+.popover > .arrow {
+    border-width: 11px;
+}
+>>>>>>> temp
 .popover > .arrow:after {
     content: "";
     border-width: 10px;
@@ -570,7 +981,10 @@ i#scroll-up:hover {
     border-bottom-color: #999;
     border-bottom-color: rgba(0, 0, 0, .25);
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> temp
 .popover.bottom > .arrow:after {
     top: 1px;
     margin-left: -10px;
@@ -580,9 +994,14 @@ i#scroll-up:hover {
 }
 
 .share-icon {
+<<<<<<< HEAD
     margin-right: 10px;
 }
 
+=======
+    margin-right:10px;
+}
+>>>>>>> temp
 .fadeIn {
     -webkit-animation: fadeIn .3s;
     -moz-animation: fadeIn .3s;
@@ -590,7 +1009,10 @@ i#scroll-up:hover {
     -o-animation: fadeIn .3s;
     animation: fadeIn .3s;
 }
+<<<<<<< HEAD
 
+=======
+>>>>>>> temp
 .fadeOut {
     -webkit-animation: fadeOut .2s;
     -moz-animation: fadeOut .2s;
@@ -598,6 +1020,7 @@ i#scroll-up:hover {
     -o-animation: fadeOut .2s;
     animation: fadeOut .2s;
 }
+<<<<<<< HEAD
 
 /*Multiple DUOSHUO threads for PJAX START*/
 
@@ -711,10 +1134,21 @@ span.ds-thread-count:after {
         opacity: 1;
     }
 }
+=======
+@-webkit-keyframes fadeIn {
+    from {
+        -webkit-transform: translateY(30px);
+        opacity: 0; }
+
+    to {
+        -webkit-transform: translateY(0);
+        opacity: 1; } }
+>>>>>>> temp
 
 @-moz-keyframes fadeIn {
     from {
         -moz-transform: translateY(30px);
+<<<<<<< HEAD
         opacity: 0;
     }
 
@@ -723,10 +1157,18 @@ span.ds-thread-count:after {
         opacity: 1;
     }
 }
+=======
+        opacity: 0; }
+
+    to {
+        -moz-transform: translateY(0);
+        opacity: 1; } }
+>>>>>>> temp
 
 @-ms-keyframes fadeIn {
     from {
         -ms-transform: translateY(30px);
+<<<<<<< HEAD
         opacity: 0;
     }
 
@@ -735,10 +1177,18 @@ span.ds-thread-count:after {
         opacity: 1;
     }
 }
+=======
+        opacity: 0; }
+
+    to {
+        -ms-transform: translateY(0);
+        opacity: 1; } }
+>>>>>>> temp
 
 @-o-keyframes fadeIn {
     from {
         -o-transform: translateY(30px);
+<<<<<<< HEAD
         opacity: 0;
     }
 
@@ -747,10 +1197,18 @@ span.ds-thread-count:after {
         opacity: 1;
     }
 }
+=======
+        opacity: 0; }
+
+    to {
+        -o-transform: translateY(0);
+        opacity: 1; } }
+>>>>>>> temp
 
 @keyframes fadeIn {
     from {
         transform: translateY(30px);
+<<<<<<< HEAD
         opacity: 0;
     }
 
@@ -759,10 +1217,18 @@ span.ds-thread-count:after {
         opacity: 1;
     }
 }
+=======
+        opacity: 0; }
+
+    to {
+        transform: translateY(0);
+        opacity: 1; } }
+>>>>>>> temp
 
 @-webkit-keyframes fadeOut {
     from {
         -webkit-transform: translateY(0);
+<<<<<<< HEAD
         opacity: 1;
     }
 
@@ -771,10 +1237,18 @@ span.ds-thread-count:after {
         opacity: 0;
     }
 }
+=======
+        opacity: 1; }
+
+    to {
+        -webkit-transform: translateY(-30px);
+        opacity: 0; } }
+>>>>>>> temp
 
 @-moz-keyframes fadeOut {
     from {
         -moz-transform: translateY(0);
+<<<<<<< HEAD
         opacity: 1;
     }
 
@@ -783,10 +1257,18 @@ span.ds-thread-count:after {
         opacity: 0;
     }
 }
+=======
+        opacity: 1; }
+
+    to {
+        -moz-transform: translateY(-30px);
+        opacity: 0; } }
+>>>>>>> temp
 
 @-ms-keyframes fadeOut {
     from {
         -ms-transform: translateY(0);
+<<<<<<< HEAD
         opacity: 1;
     }
 
@@ -795,10 +1277,18 @@ span.ds-thread-count:after {
         opacity: 0;
     }
 }
+=======
+        opacity: 1; }
+
+    to {
+        -ms-transform: translateY(-30px);
+        opacity: 0; } }
+>>>>>>> temp
 
 @-o-keyframes fadeOut {
     from {
         -o-transform: translateY(0);
+<<<<<<< HEAD
         opacity: 1;
     }
 
@@ -807,10 +1297,18 @@ span.ds-thread-count:after {
         opacity: 0;
     }
 }
+=======
+        opacity: 1; }
+
+    to {
+        -o-transform: translateY(-30px);
+        opacity: 0; } }
+>>>>>>> temp
 
 @keyframes fadeOut {
     from {
         transform: translateY(0);
+<<<<<<< HEAD
         opacity: 1;
     }
 
@@ -820,19 +1318,38 @@ span.ds-thread-count:after {
     }
 }
 
+=======
+        opacity: 1; }
+
+    to {
+        transform: translateY(-30px);
+        opacity: 0; } }
+>>>>>>> temp
 /* Fallback example for browsers that don't support 3D transforms (and no JS fallback) */
 /* We'll show the first level only */
 .no-csstransforms3d .mp-pusher,
 .no-js .mp-pusher {
+<<<<<<< HEAD
     padding-left: 300px;
+=======
+	padding-left: 300px;
+>>>>>>> temp
 }
 
 .no-csstransforms3d .mp-menu .mp-level,
 .no-js .mp-menu .mp-level {
+<<<<<<< HEAD
     display: none;
+=======
+	display: none;
+>>>>>>> temp
 }
 
 .no-csstransforms3d .mp-menu > .mp-level,
 .no-js .mp-menu > .mp-level {
+<<<<<<< HEAD
     display: block;
+=======
+	display: block;
+>>>>>>> temp
 }
