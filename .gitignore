@@ -9,6 +9,7 @@
 #
 .*
 \#*#
+.idea
 
 # Numerous always-ignore extensions
 *.bak
