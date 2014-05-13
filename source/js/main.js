@@ -4,7 +4,8 @@ $("#scroll-up").click(function () {
 });
 var hasPushstate = !!(window.history && history.pushState);
 // duoshuo load function
-var duoshuoQuery = {short_name: "yuche"}; // change to your duoshuo name
+var duoshuoName = 'yuche'; // change to your DUOSHUO name
+var duoshuoQuery = {short_name: duoshuoName}; // change to your duoshuo name
 function toggleDuoshuoComments(container) {
     var el = document.createElement('div');
     el.setAttribute('data-thread-key', postTitle);
@@ -86,7 +87,6 @@ function afterPjax() {
         var self = $(this);
         $(this).attr('id','comment' + i );
         var identifier =  postTitle + $(this).attr('id');
-        var duoshuoName = 'yuche'; // change to your DUOSHUO name
         var jsonURL = 'http://api.duoshuo.com/threads/counts.jsonp?short_name=' +
             duoshuoName + '&threads=' + identifier +
             '&callback=?';
@@ -170,7 +170,7 @@ function afterPjax() {
         el.setAttribute('data-thread-key', id);
         el.setAttribute('data-url', postHref);
         el.setAttribute('data-title', postTitle);
-        el.setAttribute('data-author-key', 'yuche'); // change to your duoshuo name
+        el.setAttribute('data-author-key', duoshuoName); // change to your duoshuo name
         DUOSHUO.EmbedThread(el);
         $(container).append(el);
     }
