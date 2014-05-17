@@ -345,7 +345,7 @@ div[data-level='1'] a {
     list-style: none;
     text-transform: none;
     font-weight: 300;
-    font-family: 'Open Sans', Arial, sans-serif;
+    font-family: 'Open Sans', Arial,'Microsoft YaHei', sans-serif;
     line-height: 65px;
     z-index: 9999;
 }
@@ -836,3 +836,4 @@ span.ds-thread-count:after {
 .no-js .mp-menu > .mp-level {
     display: block;
 }
+

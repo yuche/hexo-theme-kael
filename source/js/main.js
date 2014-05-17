@@ -1,7 +1,3 @@
-//    Scroll-To-Top button take effect
-$("#scroll-up").click(function () {
-    $(".scroller").animate({ scrollTop: "10" }, "350");
-});
 var hasPushstate = !!(window.history && history.pushState);
 // duoshuo load function
 var duoshuoName = 'yuche'; // change to your DUOSHUO name
@@ -11,7 +7,7 @@ function toggleDuoshuoComments(container) {
     el.setAttribute('data-thread-key', postTitle);
     el.setAttribute('data-url', postHref);
     el.setAttribute('data-title', postTitle);
-    el.setAttribute('data-author-key', 'yuche'); // change to your duoshuo name
+    el.setAttribute('data-author-key', duoshuoName); // change to your duoshuo name
     DUOSHUO.EmbedThread(el);
     jQuery(container).append(el);
 }
@@ -29,6 +25,11 @@ var generateTOC = function() {
         });
 
 };
+
+//    Scroll-To-Top button take effect
+$("#scroll-up").click(function () {
+    $(".scroller").animate({ scrollTop: "10" }, "350");
+});
 
 //   Scroll spy headline
 
@@ -57,6 +58,11 @@ function afterPjax() {
     postTitle = document.title;
     postHref = window.location.href;
 
+    var ie = navigator.userAgent.match(/windows\snt\s([\d\.]+)/i);
+    if (ie !== null && ie[0] < 6) {
+        $('p,li').css(['font-size','line-height'],['16px','27px']);
+    }
+
 
     generateTOC();
     setTimeout("scrollSpy()",300);
@@ -78,7 +84,7 @@ function afterPjax() {
         stackIndex : 1
     });
 
-    $(".post-content").find('p,pre,ol,ul,blockquote')
+    $(".post-content").find('p,pre,ol,ul,blockquote,figure')
         .each(function () {
             $(this).attr("class", "disqus");
             $(this).prepend('<span class="ds-thread-count">+</span>');
@@ -177,8 +183,6 @@ function afterPjax() {
 
 
     //    Multiple DUOSHUO threads for PJAX END
-
-
 
     $('.share-button').popover({
         placement: 'bottom',
@@ -304,7 +308,6 @@ function afterPjax() {
     $('#toc a').click(function (e) {
         var headID = $(this).attr('href');
         var headIDpos = $(headID).position().top;
-        console.log(headIDpos);
         $('.scroller').animate({ scrollTop: headIDpos + 200 }, 'linear');
 
         e.preventDefault();

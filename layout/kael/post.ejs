@@ -6,7 +6,7 @@
                   <div class="tag-tile">
                       <% if (post.tags && post.tags.length){ %>
                       <% post.tags.forEach(function(tag) { %>
-                      <a data-pjax href='<%= config.root + tag.path %>' style='margin:0 5px;color:#D5D5D5'><%= tag.name %></a>
+                      <a data-pjax href='<%= config.root + tag.path %>' style='color:#D5D5D5'><%= tag.name %></a>
                       <% }); %>
                       <% } %>
                   </div>

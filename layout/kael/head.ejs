@@ -156,6 +156,7 @@
                     <a id="trigger" href="#"><i class="fa fa-bars"></i></a>
                 </li>
                 <li ><a id="nexus-back" data-pjax href="<%- config.root %>"><%= config.title %></a></li>
+                <% if (theme.scroll_spy) { %>
                 <div id="nav-container">
                     <div class="post-navbar" style="line-height: 63px;display:none">
                         <li id="navbar-title"><a href="#"><%= page.title%></a></li>
@@ -169,6 +170,7 @@
                         </li>
                     </div>
                 </div>
+                <% } %>
             </nav>
 
             <div class="scroller">

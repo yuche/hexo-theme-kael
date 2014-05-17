@@ -48,7 +48,7 @@ html {
 body {
     height: 100%;
     font-family: 'Open Sans','Helvetica Neue','Helvetica',Arial,'Hiragino Sans GB',
-    'Microsoft YaHei','WenQuanYi Micro Hei',sans-serif;
+    'Microsoft YaHei','SimSun','Droid Sans Fallback',sans-serif;
     font-size: 2.0rem;
     line-height: 1.6em;
     color: #3A4145;
@@ -72,39 +72,40 @@ h4, h5, h6 {
     text-rendering: optimizeLegibility;
     line-height: 1;
     margin-top: 0;
-    font-family: 'Open Sans','Helvetica Neue','Helvetica',Arial,"STKaiti","Kai","Kaiti SC","KaiTi","BiauKai","楷体","楷体_GB2312",serif;
-    font-weight: 700;
-
+    font-family: "Open Sans","Helvetica Neue",'Helvetica',Arial,
+    "Microsoft YaHei","STKaiti","Droid Sans Fallback",SimSun,serif;
+    font-weight: 400;
 }
 
 h1 {
-    font-size: 3.5rem;
+    font-size: 3.0rem;
     line-height: 1.2em;
-    letter-spacing: -2px;
     text-indent: -3px;
+
 }
 
 h2 {
-    font-size: 3rem;
-    line-height: 1.2em;
-    letter-spacing: -1px;
-    text-indent: -2px;
+    font-size: 2.75rem;
+    line-height: 1.5em;
+    border-bottom: 1px solid #eee;
+
 }
 
 h3 {
     font-size: 2.5rem;
+
 }
 
 h4 {
-    font-size: 2rem;
+    font-size: 2.25rem;
 }
 
 h5 {
-    font-size: 1.5rem;
+    font-size: 2rem;
 }
 
 h6 {
-    font-size: 1rem;
+    font-size: 1.5rem;
 }
 
 a {
@@ -192,12 +193,13 @@ mark {
 
 code, tt {
     padding: 1px 3px;
-    font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.85em;
     white-space: pre-wrap;
     border: 1px solid #E3EDF3;
     background: #F7FAFB;
     border-radius: 2px;
+    margin: 0 2px;
+    overflow: auto;
 }
 
 pre {
@@ -207,7 +209,6 @@ pre {
     border: 1px solid #E3EDF3;
     width: 100%;
     padding: 10px;
-    font-family: Inconsolata, monospace, sans-serif;
     font-size: 0.9em;
     white-space: pre;
     overflow: auto;
@@ -375,6 +376,7 @@ margin on the iframe, cause it breaks stuff. */
 }
 
 /* Every post, on every page, gets this style on its <article> tag */
+.after-post,
 .post {
     position: relative;
     width:80%;
@@ -421,6 +423,7 @@ margin on the iframe, cause it breaks stuff. */
 
 .tag-tile a {
     font-size: 20px;
+    margin-right: 10px;
     color: #D5D5D5;
     text-decoration: none;
     border-bottom: 3px solid transparent;
@@ -642,6 +645,36 @@ figure.highlight table > tbody > tr > td.gutter {
 figure.highlight pre {
     border: none;
     margin: 0;
+}
+
+figure img {
+    display: block;
+    max-width: 100%;
+    margin: auto auto 4px;
+    -webkit-box-sizing: border-box;
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+figure figcaption {
+    position: absolute;
+    left: -172px;
+    width: 150px;
+    top: 172px;
+    text-align: right;
+    margin-top: 0;
+    font-size: 14px;
+    line-height: 22px;
+    font-weight: 400;
+    color:#bbbbbb;
+
+}
+figcaption:before {
+    width: 25%;
+    margin-left: 75%;
+    border-top: 1px solid #dededc;
+    display: block;
+    content: "";
+    margin-bottom: 10px;
 }
 
 /* Theme: Solarized - Github
