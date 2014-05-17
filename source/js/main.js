@@ -12,6 +12,8 @@ function toggleDuoshuoComments(container) {
     jQuery(container).append(el);
 }
 
+var smallScreen = window.screen.width < 500;
+
 //    Generate table of contents
 var generateTOC = function() {
 
@@ -26,64 +28,9 @@ var generateTOC = function() {
 
 };
 
-//    Scroll-To-Top button take effect
-$("#scroll-up").click(function () {
-    $(".scroller").animate({ scrollTop: "10" }, "350");
-});
+//    Multiple DUOSHUO threads for PJAX START
 
-//   Scroll spy headline
-
-var scrollSpy = function(){
-    for (var i = 1; i < 7; i++) {
-        var headI = 'h' + i;
-        $('#toc-content').text('Introduction');
-        $('.post-content').find(headI).each(function () {
-            var self = $(this);
-            self.waypoint(function () {
-                $('#navbar-toc').show();
-                var tocText = self.text();
-                $('#toc-content').text(tocText);
-            }, {
-                context: '.scroller',
-                offset: 90
-            });
-        });
-    };
-};
-afterPjax();
-
-
-function afterPjax() {
-
-    postTitle = document.title;
-    postHref = window.location.href;
-
-    var ie = navigator.userAgent.match(/windows\snt\s([\d\.]+)/i);
-    if (ie !== null && ie[0] < 6) {
-        $('p,li').css(['font-size','line-height'],['16px','27px']);
-    }
-
-
-    generateTOC();
-    setTimeout("scrollSpy()",300);
-
-    //  Mutil-push-menu init
-    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'), {
-        type: 'cover'
-    });
-
-    //    Multiple DUOSHUO threads for PJAX START
-
-    $('img').each( function() {
-        var $img = $(this),
-            href = $img.attr('src');
-        $img.wrap('<a data-lightbox="a" href="' + href + '" title="' + $img.attr('alt') +'"' + '></a>');
-    });
-
-    $('a[data-lightbox="a"]').fluidbox({
-        stackIndex : 1
-    });
-
+function  duoshuoInlineComment(){
     $(".post-content").find('p,pre,ol,ul,blockquote,figure')
         .each(function () {
             $(this).attr("class", "disqus");
@@ -97,22 +44,17 @@ function afterPjax() {
             duoshuoName + '&threads=' + identifier +
             '&callback=?';
         $.getJSON(jsonURL,function(data) {
-                $.each(data.response, function(i, item) {
-                    if (item.comments !== 0){
-                        self.text(item.comments);
-                        self.css('opacity','0.4');
-                        self.addClass('has-comment');
-                    }
-                });
+            $.each(data.response, function(i, item) {
+                if (item.comments !== 0){
+                    self.text(item.comments);
+                    self.css('opacity','0.4');
+                    self.addClass('has-comment');
+                }
             });
+        });
         $(this).after('<div class="inline-comment"></div>');
     });
 
-//  Custom about page
-
-    if(location.pathname === '/about/'){
-        $('div.post-meta').remove();
-    }
 
     $('.disqus').mouseover(function() {
         $(this).find('span.ds-thread-count').css('opacity','1');
@@ -180,9 +122,68 @@ function afterPjax() {
         DUOSHUO.EmbedThread(el);
         $(container).append(el);
     }
+}
+
+//    Multiple DUOSHUO threads for PJAX END
 
 
-    //    Multiple DUOSHUO threads for PJAX END
+
+//   Scroll spy headline
+
+var scrollSpy = function(){
+    for (var i = 1; i < 7; i++) {
+        var headI = 'h' + i;
+        $('#toc-content').text('Introduction');
+        $('.post-content').find(headI).each(function () {
+            var self = $(this);
+            self.waypoint(function () {
+                $('#navbar-toc').show();
+                var tocText = self.text();
+                $('#toc-content').text(tocText);
+            }, {
+                context: '.scroller',
+                offset: 90
+            });
+        });
+    };
+};
+afterPjax();
+
+
+function afterPjax() {
+
+    postTitle = document.title;
+    postHref = window.location.href;
+
+    var ie = navigator.userAgent.match(/windows\snt\s([\d\.]+)/i);
+    if (ie !== null && ie[0] < 6) {
+        $('p,li').css(['font-size','line-height'],['16px','27px']);
+    }
+
+    //    Scroll-To-Top button take effect
+    $("#scroll-up").click(function () {
+        $(".scroller").animate({ scrollTop: "10" }, "350");
+    });
+
+
+
+
+    //  Mutil-push-menu init
+    new mlPushMenu(document.getElementById('mp-menu'), document.getElementById('trigger'), {
+        type: 'cover'
+    });
+
+    $('img').each( function() {
+        var $img = $(this),
+            href = $img.attr('src');
+        $img.wrap('<a data-lightbox="a" href="' + href + '" title="' + $img.attr('alt') +'"' + '></a>');
+    });
+
+    $('a[data-lightbox="a"]').fluidbox({
+        stackIndex : 1
+    });
+
+
 
     $('.share-button').popover({
         placement: 'bottom',
@@ -270,7 +271,11 @@ function afterPjax() {
         $('#navbar-toc').hide();
     }
 //    Scroll 150px show full header
-    if (isPostPage) {
+    if (isPostPage && !smallScreen) {
+        generateTOC();
+        setTimeout("scrollSpy()",300);
+        duoshuoInlineComment();
+
         $('.scroller').scroll(function () {
             if ((window.screen.width - 700)/2 > $('#trigger').parent().width() + $('#nexus-back').parent().width()){
                 if ($('li#navbar-title').width() + $('li#navbar-toc').width() > $('.post').width()) {
@@ -293,16 +298,13 @@ function afterPjax() {
             }
         });
     }
-//   Scroll 150px lazy load DUOSHUO
+//   lazy load DUOSHUO
     var ds_loaded = false;
     if (isPostPage) {
-        $('.scroller').scroll(function () {
-            var scroll2top = $('.scroller').scrollTop();
-            if (scroll2top > 150 && !ds_loaded) {
-                toggleDuoshuoComments('#comment-box');
-                ds_loaded = true;
-            }
-        });
+        setTimeout(function(){
+            toggleDuoshuoComments('#comment-box');
+            ds_loaded = true;
+        }, 1000);
     }
 //    Smooth Scroll for the TOC in header
     $('#toc a').click(function (e) {
