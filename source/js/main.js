@@ -147,17 +147,50 @@ var scrollSpy = function(){
         });
     };
 };
+
+//   Easter egg
+var kaelEgg = new window.keypress.Listener();
+function showEgg(){
+    $('.block').remove();
+    $('#egg-frame').fadeIn('slow');
+    $('#close-button').fadeIn('slow');
+    kaelEgg.reset();
+}
+var kaelEggCombo = kaelEgg.sequence_combo("q w e r", function() {
+    lives = 0.8;
+    $('.block').show();
+    $('.egg').addClass('bounceIn').removeClass('bounceOut');
+    $('.egg').append('<iframe id="egg-frame" style="display: none;margin-top:0;" src="http://kael.qiniudn.com/" frameborder="0" width="100%" height="700px" scrolling="no">');
+//    iframe onload taken from http://www.nczonline.net/blog/2009/09/15/iframes-onload-and-documentdomain/
+    var iframe = document.getElementById('egg-frame');
+    if (iframe.attachEvent){
+        iframe.attachEvent("onload", function(){
+            showEgg();
+        });
+    } else {
+        iframe.onload = function(){
+            showEgg();
+        };
+    }
+}, true);
+
+$('#close-button').click(function(){
+    $('.egg').removeClass('bounceIn').addClass('bounceOut');
+    kaelEgg.register_combo(kaelEggCombo);
+    return false;
+});
+
+//  Easter egg END
+
 afterPjax();
-
-
 function afterPjax() {
 
     postTitle = document.title;
     postHref = window.location.href;
 
     var ie = navigator.userAgent.match(/windows\snt\s([\d\.]+)/i);
-    if (ie !== null && ie[0] < 6) {
-        $('p,li').css(['font-size','line-height'],['16px','27px']);
+    if (ie !== null && ie[1] < 6) {
+        document.getElementsByTagName('html')[0].className += ' windows-xp';
     }
 
     //    Scroll-To-Top button take effect
