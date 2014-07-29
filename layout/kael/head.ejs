@@ -75,6 +75,7 @@
                             </ul>
                         </div>
                     </li>
+                    <% if (config.category > 0) { %>
                     <li>
                         <a class="fa fa-copy" href="#"><i class="fa fa-angle-left">
                             </i>&nbsp;&nbsp;Categories</a>
@@ -98,6 +99,8 @@
                             </ul>
                         </div>
                     </li>
+                    <% } %>
+                    <% if (config.tag > 0) { %>
                     <li>
                         <a class="fa fa-tags" href="#"><i class="fa fa-angle-left">
                             </i>&nbsp;&nbsp;Tags</a>
@@ -120,6 +123,7 @@
                             </ul>
                         </div>
                     </li>
+                    <% } %>
                     <% if (theme.weibo_show) { %>
                     <li>
                         <a class="fa fa-weibo" href="#"><i class="fa fa-angle-left"></i>&nbsp;&nbsp;Weibo Show</a>
