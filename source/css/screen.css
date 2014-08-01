@@ -647,6 +647,10 @@ figure.highlight pre {
     margin: 0;
 }
 
+figure.highlight .line {
+    height: 20px;
+}
+
 figure img {
     display: block;
     max-width: 100%;
