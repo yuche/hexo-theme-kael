@@ -10,12 +10,13 @@ html, body, .container, .scroller, #pjax {
     height: 100%;
 }
 
+
 .scroller {
     overflow-y: scroll;
 }
 
 .mp-scroll {
-    height: 500px;
+    height: auto;
     overflow: auto;
 }
 .scroller,
@@ -232,7 +233,7 @@ html, body, .container, .scroller, #pjax {
     border: none;
     outline: none;
     -webkit-appearance: none;
-    padding: 0.7em 1em 0.7em 1.6em;
+    padding: 0.7em 0 0.7em 1.4em;
     background: white;
     color: #0099cc;
 }
