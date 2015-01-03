@@ -328,6 +328,7 @@ div[data-level='1'] a {
 .fa-angle-left {
     position: absolute;
     left: 10px;
+    z-index: -1;
 }
 
 .mp-menu .mp-level.mp-level-overlay > .mp-back,
