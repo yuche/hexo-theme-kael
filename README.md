@@ -1,4 +1,4 @@
-[中文详细说明点这里](http://hexo.yuche.me/introducing-kael-customization/)
+[中文详细说明点这里](http://yuche.me/introducing-kael-customization/)
 
 ↑↑↑↑↑↑↑↑↑↑↑↑↑↑
 
