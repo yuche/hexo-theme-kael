@@ -348,14 +348,21 @@ function afterPjax() {
         e.preventDefault();
     });
 
-//    Hover TOC navbar to show
-    $('#navbar-toc').hover(function () {
-        $('#navbar-toc i').removeClass('hover-down').addClass("hover-up");
-        $('.hidden-box').slideDown();
-    }, function () {
-        $('#navbar-toc i').removeClass('hover-up').addClass("hover-down");
-        $('.hidden-box').slideUp();
-    });
+//    Click TOC navbar to show or hide
+    var isTocShow = false;
+    $('#navbar-toc').click(function(e){
+        if (!isTocShow) {
+            $('#navbar-toc i').removeClass('hover-down').addClass("hover-up");
+            $('.hidden-box').slideDown();
+            isTocShow = true;
+        } else {
+            $('#navbar-toc i').removeClass('hover-up').addClass("hover-down");
+            $('.hidden-box').slideUp();
+            isTocShow = false;
+        }
+        e.prevent_default;
+    })
+
 
 
 
