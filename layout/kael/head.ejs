@@ -132,8 +132,9 @@
                     </li>
                     <% } %>
                     <li class="mp-pjax"><a class="fa fa-user" href="<%= config.root %>about">&nbsp;&nbsp;&nbsp;About me</a></li>
-                    <li><a class="fa fa-github" href="#">&nbsp;&nbsp;&nbsp;Github</a></li>
-
+                    <% if (theme.github) { %>
+		    <li><a class="fa fa-github" href="https://github.com/<%= theme.github %>" target="_blank">&nbsp;&nbsp;&nbsp;Github</a></li>
+		    <% } %>
                 </ul>
 
             </div>
