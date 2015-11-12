@@ -387,8 +387,6 @@ $(document).on({
         $('#navbar-toc').hide();
         $('.nexus').css('width', 'auto');
         $('#navbar-title a').hide();
-        if (typeof MathJax !== 'undefined') // support MathJax
-            MathJax.Hub.Queue(["Typeset",MathJax.Hub]);
     },
     'pjax:popstate': function () {
         setTimeout("$('#toc').find('li').remove();",100);
